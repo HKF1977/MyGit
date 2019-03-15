@@ -1,8 +1,13 @@
 #!/bin/bash
 
 apt-get update
-
 apt-get install -y openvpn
+apt-get install -y ruby
+
+mkdir api
+
+curl https://raw.githubusercontent.com/HKF1977/MyGit/master/vnscubed.rb > api/vnscubed.rb
+curl https://raw.githubusercontent.com/HKF1977/MyGit/master/api.rb > api/api.rb
 
 wait_for_api () {
    while :
@@ -18,7 +23,11 @@ wait_for_api () {
 
 wait_for_api
 
-curl -k -X GET -H 'Content-Type: application/json' -d '{"name":"100_127_255_193","format":"conf"}' https://api:vnscubed@10.10.10.10:8000/api/clientpack -o clientpack.conf
+NAME=$(api/vnscubed.rb -K api -S vnscubed -H 10.10.10.10 get_next_available_clientpack | grep 'name')
+
+IP=${NAME:7:15}
+
+api/vnscubed.rb -K api -S vnscubed -H 10.10.10.10 fetch_clientpack --name "$IP" --format "conf" -o "clientpack.conf"
 
 mv clientpack.conf /etc/openvpn
 
