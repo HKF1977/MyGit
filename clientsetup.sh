@@ -9,6 +9,9 @@ mkdir api
 curl https://raw.githubusercontent.com/HKF1977/MyGit/master/vnscubed.rb > api/vnscubed.rb
 curl https://raw.githubusercontent.com/HKF1977/MyGit/master/api.rb > api/api.rb
 
+chmod 700 api/vnscubed.rb
+chmod 700 api/api.rb
+
 wait_for_api () {
    while :
      do
