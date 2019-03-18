@@ -12,7 +12,7 @@ curl https://raw.githubusercontent.com/HKF1977/MyGit/master/api.rb > api/api.rb
 chmod 700 api/vnscubed.rb
 chmod 700 api/api.rb
 
-sleep 600
+sleep 1200
 
 wait_for_api () {
    while :
