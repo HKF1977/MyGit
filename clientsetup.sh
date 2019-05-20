@@ -5,9 +5,8 @@ apt-get install -y openvpn
 apt-get install -y ruby
 
 mkdir api
-
-curl https://raw.githubusercontent.com/HKF1977/MyGit/master/vnscubed.rb > api/vnscubed.rb
-curl https://raw.githubusercontent.com/HKF1977/MyGit/master/api.rb > api/api.rb
+curl https://s3.amazonaws.com/cohesive-networks/dnld/VNS3_4x_API_TOOL_20171114.tar.gz | tar xvz
+mv  VNS3_434API_TOOL_20171114 api
 
 chmod 700 api/vnscubed.rb
 chmod 700 api/api.rb
